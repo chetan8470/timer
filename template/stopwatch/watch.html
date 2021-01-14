@@ -1,0 +1,139 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>StopWatch</title>
+  </head>
+  <body>
+    <audio src= "{% static 'audio/ready.mp3' %}"  id="my_music" ></audio>
+    <!-- <audio src= "{% static 'audio/ready.mp3' %}"  id="lap" ></audio>
+    <audio src= "{% static 'audio/ready.mp3' %}"  id="rep" ></audio> -->
+      <div class="card text-center ml-5 mr-5 mt-5">
+        <div class="card-header">
+            <h1 class="text-center">Stopwatch</h1>
+        </div>
+        <div class="card-body">
+          <!-- <h5 class="card-title">Special title treatment</h5> -->
+
+          <div class="text-center mb-5">
+            <img src="{% static 'images/watch.gif' %}" width="15%" class="rounded" alt="My clock">
+          </div>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Total Number of Set</th>
+                <th scope="col">{{laps}} set of {{reps}} reps </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Current Laps</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Current Reps</td>
+                <td>{{reps}}</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Time for each rep</td>
+                <td>{{time}}</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                    <button type="button" class="btn btn-dark mr-5">Reset Lap</button>
+                    <button type="button" class="btn btn-secondary mr-5 ml-5">Reset Rep</button>
+                    <button type="button" class="btn btn-success mr-5 ml-5">Start</button>
+                    <button type="button" class="btn btn-danger mr-5 ml-5">Stop</button>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+            </div>
+        <div class="card-footer text-muted">
+            <a href="/form"><button type="button" class="btn btn-primary">New Timer for next Exercise</button></a>
+        </div>
+      </div>
+      
+        <script type="text/javascript">
+        function laps_function(){
+
+        }
+            console.log("fiRST -> ")
+            setTimeout(function(){
+              document.getElementById("my_music").play();
+              console.log('your audio is first started just now')
+                  },1000)
+            window.clearTimeout(5000)      
+            console.log("NEXT -> ")
+            var i = 0
+            for (i = 0; i < {{laps}}; i++) {
+                console.log(" in loop"+ i)
+                if (i == 0) {
+                        document.getElementById("my_music").setAttribute("src", "{% static 'audio/lap1.mp3' %}");
+                        console.log('works correctly')
+                        setTimeout(function(){
+                            document.getElementById("lap").play();
+                            console.log('your audio is started just now for lap 2')
+                        },1000)
+                    } 
+                else if (i == 1) {
+                  document.getElementById("my_music").setAttribute("src", "{% static 'audio/lap2.mp3' %}");
+                        console.log('works correctly for lap 2')
+                        setTimeout(function(){
+                            document.getElementById("lap").play();
+                            console.log('your audio is started just now for lap 2')
+                        },1000)
+                    } 
+                else if (i == 2) {
+                  document.getElementById("my_music").setAttribute("src", "{% static 'audio/lap3.mp3' %}");
+                        console.log('works correctly for lap 2')
+                        setTimeout(function(){
+                            document.getElementById("lap").play();
+                            console.log('your audio is started just now for lap 2')
+                        },1000)
+                    } 
+                else if (i == 3) {
+                  document.getElementById("my_music").setAttribute("src", "{% static 'audio/lap4.mp3' %}");
+                        console.log('works correctly for lap 2')
+                        setTimeout(function(){
+                            document.getElementById("lap").play();
+                            console.log('your audio is started just now for lap 2')
+                        },1000)
+                    } 
+                else if (i == 4) {
+                  document.getElementById("my_music").setAttribute("src", "{% static 'audio/lap5.mp3' %}");
+                        console.log('works correctly for lap 2')
+                        setTimeout(function(){
+                            document.getElementById("lap").play();
+                            console.log('your audio is started just now for lap 2')
+                        },1000)
+                    }   
+                  window.clearTimeout(2000)  
+                // else {
+                //         greeting = "Good evening";
+                //     }
+               
+            }
+                // document.getElementById("demo").innerHTML = text;
+        </script>
+        
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
